@@ -1,6 +1,6 @@
 const Jimp = require('jimp')
 
-const gradient = [
+const defaultGradient = [
   ' ',
   '.',
   ':',
@@ -37,7 +37,7 @@ const getLargePixel = (img, x, y, w, h, color=false) => {
   return color ? [total / size, tr / size, tg / size, tb / size].map(x => Math.floor(x)) : total / size
 }
 
-const generateASCII = (img, w, h, color=false) => {
+const generateASCII = (img, w, h, color=false, gradient=defaultGradient) => {
   let imgW = img.bitmap.width
   let imgH = img.bitmap.height
   let widths = Array(w).fill(null)
@@ -90,5 +90,5 @@ const ASCII = async (img_, width, height, color=false, grad='lbg') => {
   if (img_ instanceof Jimp) img = img_
   else if (typeof img_ == 'string') img = await Jimp.read(img_)
   else throw new Error('Error: Image must either be a Jimp object or a string pointing to a file')
-  return generateASCII(img, width, height, color)
+  return generateASCII(img, width, height, color, grad == 'lbg' ? [...defaultGradient].reverse() : grad == 'dbg' ? defaultGradient : grad)
 }

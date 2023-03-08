@@ -85,17 +85,10 @@ const generateASCII = (img, w, h, color=false) => {
   return string + (color ? '\x1b[0m' : '')
 }
 
-class ASCII {
-  constructor(gradient_=gradient) {
-    if (gradient_ == 'lbg') this.gradient = [...gradient].reverse()
-    else if (gradient == 'dbg') this.gradient = gradient
-    else this.gradient = gradient_
-  }
-  async generate(img_, width=32, height=32, color=false) {
-    let img
-    if (img_ instanceof Jimp) img = img_
-    else if (typeof img_ == 'string') img = await Jimp.read(img_)
-    else throw new Error('Error: Image must either be a Jimp object or a string pointing to a file')
-    return generateASCII(img, width, height, color)
-  }
+const ASCII = async (img_, width, height, color=false, grad='lbg') => {
+  let img
+  if (img_ instanceof Jimp) img = img_
+  else if (typeof img_ == 'string') img = await Jimp.read(img_)
+  else throw new Error('Error: Image must either be a Jimp object or a string pointing to a file')
+  return generateASCII(img, width, height, color)
 }

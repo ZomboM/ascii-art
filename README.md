@@ -1,4 +1,2 @@
 # ascii-art
-ascii art maker
-
-i play pokemon go every day
+## An ASCII-art generator in node.js

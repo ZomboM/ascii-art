@@ -37,7 +37,7 @@ const getLargePixel = (img, x, y, w, h, color=false) => {
   return color ? [total / size, tr / size, tg / size, tb / size].map(x => Math.floor(x)) : total / size
 }
 
-const generateASCII = (img, w, h, color=false, gradient=defaultGradient) => {
+const generateASCII = (img, w, h, color=false, gradient=defaultGradient, colorCorrect=false) => {
   let imgW = img.bitmap.width
   let imgH = img.bitmap.height
   let widths = Array(w).fill(null)
@@ -85,10 +85,10 @@ const generateASCII = (img, w, h, color=false, gradient=defaultGradient) => {
   return string + (color ? '\x1b[0m' : '')
 }
 
-const ASCII = async (img_, width, height, color=false, grad='lbg') => {
+const ASCII = async (img_, { width, height, color=false, grad='lbg', colorCorrect=false }) => {
   let img
   if (img_ instanceof Jimp) img = img_
   else if (typeof img_ == 'string') img = await Jimp.read(img_)
   else throw new Error('Error: Image must either be a Jimp object or a string pointing to a file')
-  return generateASCII(img, width, height, color, grad == 'lbg' ? [...defaultGradient].reverse() : grad == 'dbg' ? defaultGradient : grad)
+  return generateASCII(img, width, height, color, grad == 'lbg' ? [...defaultGradient].reverse() : grad == 'dbg' ? defaultGradient : grad, colorCorrect)
 }

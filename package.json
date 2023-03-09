@@ -1,5 +1,5 @@
 {
-  "name": "ascii-art",
+  "name": "ascii-art-maker",
   "version": "1.0.0",
   "description": "An ASCII art generator, from an image.",
   "main": "main.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ZomboM/ascii-art.git"
+    "url": "git+https://github.com/ZomboM/ascii-art-maker.git"
   },
   "keywords": [
     "ascii-art"
@@ -16,9 +16,9 @@
   "author": "Nicolaus",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ZomboM/ascii-art/issues"
+    "url": "https://github.com/ZomboM/ascii-art-maker/issues"
   },
-  "homepage": "https://github.com/ZomboM/ascii-art#readme",
+  "homepage": "https://github.com/ZomboM/ascii-art-maker#readme",
   "dependencies": {
     "jimp": "^0.22.7"
   }

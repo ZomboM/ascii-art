@@ -16,7 +16,7 @@ const defaultGradient = [
 const getPixelAt = (img, x, y) =>
   Jimp.intToRGBA(img.getPixelColor(x, y))
 
-const getLargePixel = (img, x, y, w, h, color=false, colorCorrect=false) => {
+const getLargePixel = (img, x, y, w, h, color=false) => {
   let size = w * h
   let total = 0
   let tr = 0
@@ -30,15 +30,14 @@ const getLargePixel = (img, x, y, w, h, color=false, colorCorrect=false) => {
     let av = (0.21 * r + 0.72 * g + 0.07 * b) + 255 - a
     if (av > 255) av = 255
     total += av
-    factor = colorCorrect ? Math.min(r, g, b) : 1
-    tr += r * factor
-    tg += g * factor
-    tb += b * factor
+    tr += r
+    tg += g
+    tb += b
   })
   return color ? [total / size, tr / size, tg / size, tb / size].map(x => Math.floor(x)) : total / size
 }
 
-const generateASCII = (img, w, h, color=false, gradient=defaultGradient, colorCorrect=false) => {
+const generateASCII = (img, w, h, color=false, gradient=defaultGradient) => {
   let imgW = img.bitmap.width
   let imgH = img.bitmap.height
   let widths = Array(w).fill(null)
@@ -69,7 +68,7 @@ const generateASCII = (img, w, h, color=false, gradient=defaultGradient, colorCo
         string += gradient[brightness]
       } else {
         let data =
-          getLargePixel(img, totalW, totalH, w_, h_, true, colorCorrect)
+          getLargePixel(img, totalW, totalH, w_, h_, true)
         let brightness = data[0]
         string += `\x1b[38;2;${data[1]};${data[2]};${data[3]}m`
         brightness =
@@ -86,12 +85,12 @@ const generateASCII = (img, w, h, color=false, gradient=defaultGradient, colorCo
   return string + (color ? '\x1b[0m' : '')
 }
 
-const ASCII = async (img_, { width, height, color=false, grad='lbg', colorCorrect=false }) => {
+const ASCII = async (img_, { width, height, color=false, grad='lbg'}) => {
   let img
   if (img_ instanceof Jimp) img = img_
   else if (typeof img_ == 'string') img = await Jimp.read(img_)
   else throw new Error('Error: Image must either be a Jimp object or a string pointing to a file')
-  return generateASCII(img, width, height, color, grad == 'lbg' ? [...defaultGradient].reverse() : grad == 'dbg' ? defaultGradient : grad, colorCorrect)
+  return generateASCII(img, width, height, color, grad == 'lbg' ? [...defaultGradient].reverse() : grad == 'dbg' ? defaultGradient : grad)
 }
 
-module.exports = ASCII
+exports.generate = ASCII;

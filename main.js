@@ -16,7 +16,7 @@ const defaultGradient = [
 const getPixelAt = (img, x, y) =>
   Jimp.intToRGBA(img.getPixelColor(x, y))
 
-const getLargePixel = (img, x, y, w, h, color=false) => {
+const getLargePixel = (img, x, y, w, h, color=false, colorCorrect=false) => {
   let size = w * h
   let total = 0
   let tr = 0
@@ -30,9 +30,10 @@ const getLargePixel = (img, x, y, w, h, color=false) => {
     let av = (0.21 * r + 0.72 * g + 0.07 * b) + 255 - a
     if (av > 255) av = 255
     total += av
-    tr += r
-    tg += g
-    tb += b
+    factor = colorCorrect ? Math.min(r, g, b) : 1
+    tr += r * factor
+    tg += g * factor
+    tb += b * factor
   })
   return color ? [total / size, tr / size, tg / size, tb / size].map(x => Math.floor(x)) : total / size
 }
@@ -68,7 +69,7 @@ const generateASCII = (img, w, h, color=false, gradient=defaultGradient, colorCo
         string += gradient[brightness]
       } else {
         let data =
-          getLargePixel(img, totalW, totalH, w_, h_, true)
+          getLargePixel(img, totalW, totalH, w_, h_, true, colorCorrect)
         let brightness = data[0]
         string += `\x1b[38;2;${data[1]};${data[2]};${data[3]}m`
         brightness =
@@ -92,3 +93,5 @@ const ASCII = async (img_, { width, height, color=false, grad='lbg', colorCorrec
   else throw new Error('Error: Image must either be a Jimp object or a string pointing to a file')
   return generateASCII(img, width, height, color, grad == 'lbg' ? [...defaultGradient].reverse() : grad == 'dbg' ? defaultGradient : grad, colorCorrect)
 }
+
+module.exports = ASCII

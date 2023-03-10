@@ -7,11 +7,11 @@ In the shell:<br>`$ npm install ascii-art-maker`
 In your JavaScript:<br>`const ASCII = require('ascii-art-maker')`
 
 ## Usage
-`ASCII.generate(image, opts)`
+`ASCII.generate(image, opts)`<br>
 Returns a Promise that resolves with the ASCII art.
 
-`image` is either a Jimp object or a path to the image
-`opts` is an object with the following properties:
+`image` is either a Jimp object or a path to the image<br>
+`opts` is an object with the following properties:<br>
 | Property | Value | Description | Default |
 | - | - | - | - |
 | `width` | `number` | The width, in output pixels, of the output. Note that each output pixel is two characters wide, so the width in characters will be twice this value. | `64` |

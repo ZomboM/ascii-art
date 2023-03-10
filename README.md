@@ -8,6 +8,8 @@ In your JavaScript:<br>`const ASCII = require('ascii-art-maker')`
 
 ## Usage
 `ASCII.generate(image, opts)`
+Returns a Promise that resolves with the ASCII art.
+
 `image` is either a Jimp object or a path to the image
 `opts` is an object with the following properties:
 | Property | Value | Description | Default |

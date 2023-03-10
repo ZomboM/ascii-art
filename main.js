@@ -26,8 +26,7 @@ const getLargePixel = (img, x, y, w, h, color=false) => {
     let r = img.bitmap.data[idx]
     let g = img.bitmap.data[idx + 1]
     let b = img.bitmap.data[idx + 2]
-    let a = (img.bitmap.data[idx + 3] != undefined) ? img.bitmap.data[idx + 3] : 255
-    let av = (0.21 * r + 0.72 * g + 0.07 * b) + 255 - a
+    let av = (0.21 * r + 0.72 * g + 0.07 * b)
     if (av > 255) av = 255
     total += av
     tr += r

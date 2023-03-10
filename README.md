@@ -21,17 +21,18 @@ Returns a Promise that resolves with the ASCII art.
 ## Examples
 ```js
 const ASCII = require('ascii-art-maker')
-console.log(ASCII('./content/images/peppers.jpg', {
+const log = async () => {console.log(ASCII('./content/images/peppers.jpg', {
   width: 64, height: 64,
   grad: 'lbg',
   color: true,
-}))
+}))}
+log()
 ```
 ```js
 const ASCII = require('ascii-art-maker')
-console.log(ASCII('./content/images/lenna.jpg', {
+ASCII('./content/images/lenna.jpg', {
   width: 128, height: 128,
   grad: 'dbg',
   color: false,
-}))
+}).then(art => {console.log(art)})
 ```

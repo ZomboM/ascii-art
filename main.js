@@ -92,4 +92,4 @@ const ASCII = async (img_, { width, height, color=false, grad='lbg'}) => {
   return generateASCII(img, width, height, color, grad == 'lbg' ? [...defaultGradient].reverse() : grad == 'dbg' ? defaultGradient : grad)
 }
 
-exports.generate = ASCII;
+exports.generate = ASCII

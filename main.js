@@ -93,3 +93,4 @@ const ASCII = async (img_, { width, height, color=false, grad='lbg'}) => {
 }
 
 exports.generate = ASCII
+exports.figlet = require('./fig.js')

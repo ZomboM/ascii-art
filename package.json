@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/ZomboM/ascii-art-maker#readme",
   "dependencies": {
+    "fs": "^0.0.1-security",
     "jimp": "^0.22.7"
   }
 }

@@ -1,12 +1,16 @@
 # ascii-art-maker:<br>An ASCII art generator in node.js
-| [Installation](#installation) | [Usage](#usage) | [Examples](#examples) |
-| - | - | - |
-## Installation
+| [Installation](#installation) | [`generate`](#generate) | [`figlet`](#figlet) |
+| :-: | :-: | :-: |
+| - | [Usage](#g-u) | [Usage](#f-u) |
+| - | [Examples](#g-e) | [Examples](#f-e) |
+
+# Installation
 In the shell:<br>`$ npm install ascii-art-maker`
 
 In your JavaScript:<br>`const ASCII = require('ascii-art-maker')`
 
-## Usage
+# `generate`
+## Usage<a name="g-u"></a>
 `ASCII.generate(image, opts)`<br>
 Returns a Promise that resolves with the ASCII art.
 
@@ -18,7 +22,8 @@ Returns a Promise that resolves with the ASCII art.
 | `height` | `number` | The height, in characters, of the output. | `64` |
 | `grad` | `"lbg" \| "dbg" \| string[]` | The gradient used in the output. Use `'lbg'` for the default light background gradient and `'dbg'` for the default dark background. If using an array, note that it goes from darkest to lightest. | `"lbg"` |
 | `color` | `boolean` | Whether or not to color the output. This uses ANSI escape codes. | `false` |
-## Examples
+
+## Examples<a name="g-e"></a>
 ```js
 const ASCII = require('ascii-art-maker')
 const log = async () => {console.log(ASCII('./content/images/peppers.jpg', {
@@ -28,6 +33,7 @@ const log = async () => {console.log(ASCII('./content/images/peppers.jpg', {
 }))}
 log()
 ```
+---
 ```js
 const ASCII = require('ascii-art-maker')
 ASCII('./content/images/lenna.jpg', {

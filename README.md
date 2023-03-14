@@ -26,19 +26,45 @@ Returns a Promise that resolves with the ASCII art.
 ## Examples<a name="g-e"></a>
 ```js
 const ASCII = require('ascii-art-maker')
-const log = async () => {console.log(ASCII('./content/images/peppers.jpg', {
-  width: 64, height: 64,
-  grad: 'lbg',
-  color: true,
-}))}
+const log = async () => {console.log(
+  ASCII.generate('./content/images/peppers.jpg', {
+    width: 64, height: 64,
+    grad: 'lbg',
+    color: true,
+  })
+)}
 log()
 ```
 ---
 ```js
 const ASCII = require('ascii-art-maker')
-ASCII('./content/images/lenna.jpg', {
+ASCII.generate('./content/images/lenna.jpg', {
   width: 128, height: 128,
   grad: 'dbg',
   color: false,
 }).then(art => {console.log(art)})
+```
+
+# `figlet`
+## Usage<a name="f-u">
+`ASCII.figlet(str, font)`<br>
+Returns a Promise that resolves with the banner text.
+
+`str` is a string<br>
+`font` is the path to a FIGlet font file
+(`standard.flf` is included with the package and is the default value)
+
+## Examples<a name="f-e"></a>
+```js
+const ASCII = require('ascii-art-maker')
+const log = async () => {console.log(
+  ASCII.figlet('hi there')
+)}
+log()
+```
+---
+```js
+const ASCII = require('ascii-art-maker')
+ASCII('figlet text', './small.flf')
+  .then(art => {console.log(art)})
 ```

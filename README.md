@@ -10,7 +10,7 @@ In the shell:<br>`$ npm install ascii-art-maker`
 In your JavaScript:<br>`const ASCII = require('ascii-art-maker')`
 
 # `generate`
-## Usage<a name="g-u"></a>
+## Usage<a name="g-u">
 `ASCII.generate(image, opts)`<br>
 Returns a Promise that resolves with the ASCII art.
 
@@ -23,7 +23,7 @@ Returns a Promise that resolves with the ASCII art.
 | `grad` | `"lbg" \| "dbg" \| string[]` | The gradient used in the output. Use `'lbg'` for the default light background gradient and `'dbg'` for the default dark background. If using an array, note that it goes from darkest to lightest. | `"lbg"` |
 | `color` | `boolean` | Whether or not to color the output. This uses ANSI escape codes. | `false` |
 
-## Examples<a name="g-e"></a>
+## Examples<a name="g-e">
 ```js
 const ASCII = require('ascii-art-maker')
 const log = async () => {console.log(
@@ -54,7 +54,7 @@ Returns a Promise that resolves with the banner text.
 `font` is the path to a FIGlet font file
 (`standard.flf` is included with the package and is the default value)
 
-## Examples<a name="f-e"></a>
+## Examples<a name="f-e">
 ```js
 const ASCII = require('ascii-art-maker')
 const log = async () => {console.log(

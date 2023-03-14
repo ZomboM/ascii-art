@@ -4,7 +4,7 @@ const chunk = (array, chunkSize) => Array(Math.ceil(array.length / chunkSize)).f
   .map((_, index) => index * chunkSize)
   .map(begin => array.slice(begin, begin + chunkSize))
 
-const fig = async (str, font) => {
+const fig = async (str, font='standard.flf') => {
   const lines = font.split('\n')
   const header = lines[0].split(' ')
   const height = parseInt(header[1])

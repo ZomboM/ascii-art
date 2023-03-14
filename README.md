@@ -1,8 +1,8 @@
 # ascii-art-maker:<br>An ASCII art generator in node.js
 | [Installation](#installation) | [`generate`](#generate) | [`figlet`](#figlet) |
 | :-: | :-: | :-: |
-| - | [Usage](#g-u) | [Usage](#f-u) |
-| - | [Examples](#g-e) | [Examples](#f-e) |
+| - | [Usage](#usage) | [Usage](#usage-1) |
+| - | [Examples](#examples) | [Examples](#examples-1) |
 
 # Installation
 In the shell:<br>`$ npm install ascii-art-maker`
@@ -10,7 +10,7 @@ In the shell:<br>`$ npm install ascii-art-maker`
 In your JavaScript:<br>`const ASCII = require('ascii-art-maker')`
 
 # `generate`
-## Usage<a name="g-u">
+## Usage
 `ASCII.generate(image, opts)`<br>
 Returns a Promise that resolves with the ASCII art.
 
@@ -23,7 +23,7 @@ Returns a Promise that resolves with the ASCII art.
 | `grad` | `"lbg" \| "dbg" \| string[]` | The gradient used in the output. Use `'lbg'` for the default light background gradient and `'dbg'` for the default dark background. If using an array, note that it goes from darkest to lightest. | `"lbg"` |
 | `color` | `boolean` | Whether or not to color the output. This uses ANSI escape codes. | `false` |
 
-## Examples<a name="g-e">
+## Examples
 ```js
 const ASCII = require('ascii-art-maker')
 const log = async () => {console.log(
@@ -46,7 +46,7 @@ ASCII.generate('./content/images/lenna.jpg', {
 ```
 
 # `figlet`
-## Usage<a name="f-u">
+## Usage
 `ASCII.figlet(str, font)`<br>
 Returns a Promise that resolves with the banner text.
 
@@ -54,7 +54,7 @@ Returns a Promise that resolves with the banner text.
 `font` is the path to a FIGlet font file
 (`standard.flf` is included with the package and is the default value)
 
-## Examples<a name="f-e">
+## Examples
 ```js
 const ASCII = require('ascii-art-maker')
 const log = async () => {console.log(

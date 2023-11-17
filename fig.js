@@ -1,4 +1,4 @@
-const fs = require('fs/promises')
+import fs from 'fs/promises'
 
 const chunk = (array, chunkSize) => Array(Math.ceil(array.length / chunkSize)).fill()
   .map((_, index) => index * chunkSize)
@@ -25,4 +25,4 @@ const fig = async (str, font='standard.flf') => {
   return result.join('\n')
 }
 
-module.exports = fig
+export default fig

@@ -1,4 +1,5 @@
-const Jimp = require('jimp')
+import Jimp from 'jimp'
+export {default as fig} from './fig.js'
 
 const defaultGradient = [
   ' ',
@@ -84,13 +85,11 @@ const generateASCII = (img, w, h, color=false, gradient=defaultGradient) => {
   return string + (color ? '\x1b[0m' : '')
 }
 
-const ASCII = async (img_, { width, height, color=false, grad='lbg'}) => {
+export const ASCII = async (img_, { width, height, color=false, grad='lbg'}) => {
   let img
   if (img_ instanceof Jimp) img = img_
   else if (typeof img_ == 'string') img = await Jimp.read(img_)
   else throw new Error('Error: Image must either be a Jimp object or a string pointing to a file')
   return generateASCII(img, width, height, color, grad == 'lbg' ? [...defaultGradient].reverse() : grad == 'dbg' ? defaultGradient : grad)
 }
-
-exports.generate = ASCII
-exports.figlet = require('./fig.js')
+export default ASCII

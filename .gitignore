@@ -3,3 +3,5 @@
 replit.nix
 
 node_modules/
+
+test/
